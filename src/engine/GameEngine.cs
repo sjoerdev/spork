@@ -46,7 +46,6 @@ public class GameEngine
 
     // window
     public string title = "no title currently";
-    public string iconPath = "res/gradius_icon.ico";
     public int windowWidth = 800;
     public int windowHeight = 600;
     public SharpDX.Color clearColor = new(255, 255, 255);
@@ -65,7 +64,7 @@ public class GameEngine
     {
         renderForm = new RenderForm(title)
         {
-            Icon = Icon.ExtractAssociatedIcon(iconPath),
+            ShowIcon = false,
             ClientSize = new Size(windowWidth, windowHeight),
             AutoSizeMode = AutoSizeMode.GrowAndShrink,
             MaximizeBox = false,
