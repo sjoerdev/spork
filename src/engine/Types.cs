@@ -19,18 +19,18 @@ public class GameObject
     public GameObject() => engine.subscribingGameObjects.Add(this);
 
     public virtual void Destroy() => engine.unsubscribingGameObjects.Add(this);
-    public virtual void GameEnd() => Destroy();
+    public virtual void GameEnd(){}
     public virtual void GameInitialize(){}
     public virtual void GameStart(){}
     public virtual void Update(){}
     public virtual void Paint(){}
 
-    public void SetActive(bool isActive)
+    public void SetActive(bool value)
     {
-        if (this.isActive == isActive) return;
-        if (isActive == true) engine.subscribingGameObjects.Add(this);
+        if (isActive == value) return;
+        if (value == true) engine.subscribingGameObjects.Add(this);
         else engine.unsubscribingGameObjects.Add(this);
-        this.isActive = isActive;
+        isActive = value;
     }
 }
 
@@ -40,7 +40,7 @@ public class Bitmap
     public float Width => dxbitmap.Size.Width;
     public float Height => dxbitmap.Size.Height;
 
-    public Bitmap(string filePath) => LoadFromFile("res/" + filePath);
+    public Bitmap(string filePath) => LoadFromFile(filePath);
 
     private void LoadFromFile(string filePath)
     {
@@ -55,7 +55,7 @@ public class Bitmap
     }
 }
 
-public class Font : IDisposable
+public class Font
 {
     public enum Alignment
     {
@@ -66,21 +66,10 @@ public class Font : IDisposable
 
     public SharpDX.DirectWrite.TextFormat format;
 
-    public Font(string name, float size) => CreateFont(name, size);
-
-    public void Dispose()
-    {
-        if (format != null)
-        {
-            format.Dispose();
-            format = null;
-        }
-    }
-
-    private void CreateFont(string fontName, float size)
+    public Font(string name, float size)
     {
         SharpDX.DirectWrite.Factory fontFactory = new();
-        format = new SharpDX.DirectWrite.TextFormat(fontFactory, fontName, size);
+        format = new SharpDX.DirectWrite.TextFormat(fontFactory, name, size);
         fontFactory.Dispose();
     }
 
@@ -135,7 +124,7 @@ public class AudioClip : ISampleProvider
         for (int i = 0; i < originalData.Length; ++i) data[i] = originalData[i] * volume;
     }
 
-    public void SetLooping(bool looping) => this.looping = looping;
+    public void SetLooping(bool value) => looping = value;
     public float GetVolume() => volume;
     public bool IsLooping() => looping;
 
@@ -147,11 +136,7 @@ public class AudioClip : ISampleProvider
         {
             currentPosition = 0;
             availableSamples = 0;
-
-            if (looping == true)
-            {
-                availableSamples = data.Length - currentPosition;
-            }
+            if (looping == true) availableSamples = data.Length - currentPosition;
         }
 
         long samplesToCopy = Math.Min(availableSamples, count);
