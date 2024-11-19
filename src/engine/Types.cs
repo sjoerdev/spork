@@ -9,16 +9,16 @@ using SharpDX.IO;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 
-namespace Project;
+namespace Spork;
 
 public class GameObject
 {
-    public GameEngine Engine => GameEngine.Instance;
+    public Engine engine => Engine.Instance;
     public bool isActive = true;
 
-    public GameObject() => Engine.subscribingGameObjects.Add(this);
+    public GameObject() => engine.subscribingGameObjects.Add(this);
 
-    public virtual void Destroy() => Engine.unsubscribingGameObjects.Add(this);
+    public virtual void Destroy() => engine.unsubscribingGameObjects.Add(this);
     public virtual void GameEnd() => Destroy();
     public virtual void GameInitialize(){}
     public virtual void GameStart(){}
@@ -28,8 +28,8 @@ public class GameObject
     public void SetActive(bool isActive)
     {
         if (this.isActive == isActive) return;
-        if (isActive == true) Engine.subscribingGameObjects.Add(this);
-        else Engine.unsubscribingGameObjects.Add(this);
+        if (isActive == true) engine.subscribingGameObjects.Add(this);
+        else engine.unsubscribingGameObjects.Add(this);
         this.isActive = isActive;
     }
 }
@@ -50,7 +50,7 @@ public class Bitmap
         BitmapFrameDecode frame = bitmapDecoder.GetFrame(0);
         FormatConverter converter = new(imagingFactory);
         converter.Initialize(frame, SharpDX.WIC.PixelFormat.Format32bppPRGBA);
-        RenderTarget renderTarget = GameEngine.Instance.renderTarget;
+        RenderTarget renderTarget = Engine.Instance.renderTarget;
         dxbitmap = Bitmap1.FromWicBitmap(renderTarget, converter);
     }
 }

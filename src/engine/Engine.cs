@@ -14,13 +14,13 @@ using SharpDX.Mathematics.Interop;
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
 
-namespace Project;
+namespace Spork;
 
-public class GameEngine
+public class Engine
 {
     // singleton
-    private static GameEngine instance;
-    public static GameEngine Instance
+    private static Engine instance;
+    public static Engine Instance
     {
         get
         {

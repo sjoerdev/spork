@@ -1,12 +1,12 @@
-using System;
+using Spork;
 
-namespace Project;
+namespace Game;
 
 public class Entry
 {
     static void Main()
     {
-        GameEngine instance = GameEngine.Instance;
+        Engine instance = Engine.Instance;
         new Game();
         instance.Run();
     }
@@ -16,11 +16,11 @@ public class Game : GameObject
 {
     public override void GameInitialize()
     {
-        Engine.title = "spork game engine";
-        Engine.windowWidth = 800;
-        Engine.windowHeight = 600;
-        Engine.scale = new(2, 2);
-        Engine.clearColor = new(0, 0, 0);
+        engine.title = "spork game engine";
+        engine.windowWidth = 800;
+        engine.windowHeight = 600;
+        engine.scale = new(2, 2);
+        engine.clearColor = new(0, 0, 0);
     }
 
     public override void GameStart()

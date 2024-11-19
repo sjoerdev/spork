@@ -4,7 +4,7 @@ using System.Numerics;
 
 using SharpDX.Windows;
 
-namespace Project;
+namespace Spork;
 
 public class Input
 {
