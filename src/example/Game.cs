@@ -1,3 +1,5 @@
+using System.Drawing;
+using System.Numerics;
 using Spork;
 
 namespace Game;
@@ -16,11 +18,10 @@ public class Game : GameObject
 {
     public override void GameInitialize()
     {
-        engine.title = "spork game engine";
+        engine.title = "game";
         engine.windowWidth = 800;
         engine.windowHeight = 600;
-        engine.scale = new(2, 2);
-        engine.clearColor = new(0, 0, 0);
+        engine.scale = Vector2.One * 2;
     }
 
     public override void GameStart()

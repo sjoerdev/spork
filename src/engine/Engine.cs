@@ -29,11 +29,10 @@ public class Engine
         }
     }
 
-    // stuff
+    // gameobjects
     private List<GameObject> gameObjects = [];
     public List<GameObject> subscribingGameObjects = [];
     public List<GameObject> unsubscribingGameObjects = [];
-    public Input input;
 
     // audio
     private WaveOut outputDevice;
@@ -48,12 +47,13 @@ public class Engine
     public string title = "no title currently";
     public int windowWidth = 800;
     public int windowHeight = 600;
-    public SharpDX.Color clearColor = new(255, 255, 255);
+    public Color clearColor = Color.Black;
 
     // other
+    public Input input;
     public float deltaTime = 0.0f;
     public float angle = 0.0f;
-    public Vector2 scale = new(1.0f, 1.0f);
+    public Vector2 scale = Vector2.One;
     private SolidColorBrush currentBrush;
     private Font defaultFont;
     private Stopwatch stopwatch;
@@ -125,7 +125,7 @@ public class Engine
         RenderLoop.Run(renderForm, () =>
         {
             renderTarget.BeginDraw();
-            renderTarget.Clear(clearColor);
+            renderTarget.Clear(new RawColor4(clearColor.R, clearColor.G, clearColor.B, clearColor.A));
             input.Update();
             foreach (GameObject go in gameObjects) go.Update();
             canpaint = true;
