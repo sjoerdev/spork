@@ -91,9 +91,9 @@ public class Input
         mouseButtonsUpLastFrame.Clear();
     }
 
-    public bool GetKey(Key key) => keysPressed.Contains((Keys)key);
-    public bool GetKeyDown(Key key) => keysDown.Contains((Keys)key);
-    public bool GetKeyUp(Key key) => keysUp.Contains((Keys)key);
+    public bool GetKey(Keys key) => keysPressed.Contains(key);
+    public bool GetKeyDown(Keys key) => keysDown.Contains(key);
+    public bool GetKeyUp(Keys key) => keysUp.Contains(key);
     public bool GetMouseButton(int buttonID) => mouseButtonsPressed.Contains(TranslateMouseButton(buttonID));
     public bool GetMouseButtonDown(int buttonID) => mouseButtonsDown.Contains(TranslateMouseButton(buttonID));
     public bool GetMouseButtonUp(int buttonID) => mouseButtonsUp.Contains(TranslateMouseButton(buttonID));
