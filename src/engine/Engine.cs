@@ -24,14 +24,7 @@ public class Engine
 {
     // singleton
     private static Engine instance;
-    public static Engine Instance
-    {
-        get
-        {
-            instance ??= new();
-            return instance;
-        }
-    }
+    public static Engine Instance = instance ??= new();
 
     // gameobjects
     private List<GameObject> gameObjects = [];
