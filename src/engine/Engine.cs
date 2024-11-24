@@ -1,5 +1,10 @@
-﻿using System.Diagnostics;
+﻿using System;
 using System.Numerics;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Diagnostics;
+using System.Windows.Forms;
 
 using SharpDX.Windows;
 using SharpDX.DXGI;

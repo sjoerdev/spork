@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
     <OutputType>exe</OutputType>
-    <ImplicitUsings>enable</ImplicitUsings>
     <DebugType>embedded</DebugType>
     <PublishSingleFile>true</PublishSingleFile>
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
